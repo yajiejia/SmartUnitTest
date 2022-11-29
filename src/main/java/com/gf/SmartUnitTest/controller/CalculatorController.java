@@ -16,7 +16,9 @@ public class CalculatorController {
 
 
     @GetMapping("/add")
-    public int add(@RequestParam("param1") int param1, @RequestParam("param2") int param2) {
+    public int add(@RequestParam("param1") int param1, @RequestParam("param2") int param2) throws Exception {
+        if(param1 == Integer.MAX_VALUE)
+            throw new Exception("param1不能为Integer.max_value");
         return calculatorService.add(param1, param2);
     }
 
